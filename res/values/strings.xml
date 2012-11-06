@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">ZimDroid</string>
+    <string name="title_page_detail">Page Detail</string>
+    <string name="title_page_list">Pages</string>
+
+</resources>
