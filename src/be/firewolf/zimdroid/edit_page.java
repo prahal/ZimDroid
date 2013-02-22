@@ -8,15 +8,15 @@ import java.io.IOException;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.text.method.ScrollingMovementMethod;
+//import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebView;
+//import android.webkit.WebView;
 import android.widget.EditText;
-import android.widget.Scroller;
+//import android.widget.Scroller;
 import android.widget.Toast;
-import android.support.v4.app.NavUtils;
+//import android.support.v4.app.NavUtils;
 
 public class edit_page extends Activity {
 	

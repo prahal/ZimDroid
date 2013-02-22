@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
+//import java.lang.reflect.Array;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import org.apache.http.util.EncodingUtils;
 
@@ -16,10 +16,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
+//import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.support.v4.app.NavUtils;
+//import android.support.v4.app.NavUtils;
 
 public class display_page extends Activity {
 
@@ -52,10 +52,10 @@ public class display_page extends Activity {
         setContentView(R.layout.activity_display_page);
         Bundle bundle = this.getIntent().getExtras();
         File path = new File(bundle.getString("page_path"));
-        File zimfile = new File(bundle.getString("notepad_path"));
-        if(path == null)
-        	finish();
-        else {
+        //File zimfile = new File(bundle.getString("notepad_path"));
+        if(path != null) {
+        	//finish();
+        //else {
         	WebView mdView = (WebView) findViewById(R.id.mdView);
         	mdView.setWebViewClient(new WebViewClient()
             {

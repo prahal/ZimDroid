@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
+//import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,13 +13,13 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.support.v4.app.NavUtils;
+//import android.support.v4.app.NavUtils;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
 import java.util.ArrayList;
-import java.util.Set;
+//import java.util.Set;
 
 public class select_notepad extends Activity {
 	final String PREFS_NAME = "ZimDroidSetv1";

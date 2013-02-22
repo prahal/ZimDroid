@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.http.util.EncodingUtils;
 
-import android.annotation.TargetApi;
+//import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;

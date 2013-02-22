@@ -195,7 +195,7 @@ public class ZimNotepad {
 				return false;
 			}
 			else {
-				ZimPage nowa = new ZimPage(Name, location, this.zimFile);
+				//ZimPage nowa = new ZimPage(Name, location, this.zimFile);
 				return true;
 			}
 		}

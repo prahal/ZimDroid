@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="be.firewolf.zimdroid"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="0.1" >
 
     <uses-sdk
         android:minSdkVersion="4"
@@ -13,6 +13,7 @@
         android:icon="@drawable/zim"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
         <activity
             android:name=".select_notepad"
             android:label="@string/app_name" >
@@ -21,18 +22,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".display_page"
             android:label="@string/title_activity_display_page" >
-            <intent-filter>
-            </intent-filter>
         </activity>
+
         <activity
             android:name=".display_folder"
             android:label="@string/title_activity_display_folder" >
-            <intent-filter>
-            </intent-filter>
         </activity>
+
         <activity
             android:name=".select_file"
             android:label="@string/title_activity_select_file" >
@@ -44,6 +44,7 @@
         <meta-data
             android:name="PREFS_NAME"
             android:value="ZimDroidSetv1" />
+
         <meta-data
             android:name="PREFS_LIST"
             android:value="list_of_notepads" />

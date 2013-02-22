@@ -8,13 +8,13 @@ import android.content.Context;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+//import android.view.View;
+//import android.widget.Button;
 import android.widget.ListView;
-import android.support.v4.app.NavUtils;
+//import android.support.v4.app.NavUtils;
 
 import be.firewolf.zimdroid.ZimNotepad;
-import be.firewolf.zimdroid.ZimNotepad.ZimPage;
+//import be.firewolf.zimdroid.ZimNotepad.ZimPage;
 
 
 
