@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="?android:attr/listPreferredItemHeight" 
+	android:padding="6dip">
+    
+	<TextView
+            android:id="@+id/txtPage"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            android:textSize="20dip"
+            android:ellipsize="end" />
+	
+	<Button 
+	    android:id="@+id/btnEnter"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:layout_gravity="right"
+        android:focusable="false"
+        android:layout_alignParentRight="true" />
+	
+</RelativeLayout>

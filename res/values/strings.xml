@@ -1,7 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">ZimDroid</string>
-    <string name="title_page_detail">Page Detail</string>
-    <string name="title_page_list">Pages</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_select_notepad">Select notebook</string>
+    <string name="button_add_notepad">Add notebook</string>
+    <string name="title_activity_display_page">Browse page</string>
+    <string name="title_activity_display_folder">Select page</string>
+    <string name="title_activity_select_file">Select *.zim file</string>
+    <string name="title_activity_edit_page">Edit page</string>
+    <string name="save_page">Save page</string>
+    <string name="add_page">Add page</string>
 
 </resources>

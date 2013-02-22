@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:padding="6dip">
+    
+	<TextEdit
+            android:id="@+id/edtAdd"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            android:textSize="20dip"
+            android:ellipsize="end" />
+	
+	<Button 
+	    android:id="@+id/btnAdd"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:layout_gravity="right"
+        android:focusable="false"
+        android:layout_alignParentRight="true"  />
+	<Button 
+	    android:id="@+id/btnCancel"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:layout_gravity="right"
+        android:focusable="false"
+        android:layout_alignParentRight="true"  />
+	
+</RelativeLayout>

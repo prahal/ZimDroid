@@ -4,28 +4,53 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="4"
         android:targetSdkVersion="15" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/zim"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".PageListActivity"
-            android:label="@string/title_page_list" >
+            android:name=".select_notepad"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".PageDetailActivity"
-            android:label="@string/title_page_detail" >
+            android:name=".display_page"
+            android:label="@string/title_activity_display_page" >
+            <intent-filter>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".display_folder"
+            android:label="@string/title_activity_display_folder" >
+            <intent-filter>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".select_file"
+            android:label="@string/title_activity_select_file" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".PageListActivity" />
+                android:value="be.firewolf.zimdroid.select_notepad" />
+        </activity>
+
+        <meta-data
+            android:name="PREFS_NAME"
+            android:value="ZimDroidSetv1" />
+        <meta-data
+            android:name="PREFS_LIST"
+            android:value="list_of_notepads" />
+
+        <activity
+            android:name=".edit_page"
+            android:label="@string/title_activity_edit_page" >
         </activity>
     </application>
 
