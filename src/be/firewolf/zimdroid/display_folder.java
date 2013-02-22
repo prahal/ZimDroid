@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.support.v4.app.NavUtils;
 
-import cx.ath.worm.zimdroid.ZimNotepad;
-import cx.ath.worm.zimdroid.ZimNotepad.ZimPage;
+import be.firewolf.zimdroid.ZimNotepad;
+import be.firewolf.zimdroid.ZimNotepad.ZimPage;
 
 
 

@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import cx.ath.worm.zimdroid.ZimNotepad.ZimPage;
+import be.firewolf.zimdroid.ZimNotepad.ZimPage;
 
 public class FolderViewAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;
