@@ -50,7 +50,7 @@ public final class R {
         public static final int activity_page_list=0x7f030004;
         public static final int activity_page_twopane=0x7f030005;
         public static final int activity_select_file=0x7f030006;
-        public static final int activity_select_notepad=0x7f030007;
+        public static final int activity_select_notebook=0x7f030007;
         public static final int addpage_dialog=0x7f030008;
         public static final int fragment_page_detail=0x7f030009;
         public static final int row=0x7f03000a;

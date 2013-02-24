@@ -32,7 +32,7 @@ public class select_notebook extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_notepad);
+        setContentView(R.layout.activity_select_notebook);
         
     	final ListView list = (ListView) findViewById(R.id.lstNotepads);
         //Adapter for ListView:
