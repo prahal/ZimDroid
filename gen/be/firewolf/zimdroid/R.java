@@ -61,7 +61,7 @@ public final class R {
         public static final int activity_display_page=0x7f070001;
         public static final int activity_edit_page=0x7f070002;
         public static final int activity_select_file=0x7f070003;
-        public static final int activity_select_notepad=0x7f070004;
+        public static final int activity_select_notebook=0x7f070004;
     }
     public static final class string {
         public static final int add_page=0x7f050009;

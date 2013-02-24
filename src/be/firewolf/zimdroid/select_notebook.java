@@ -1,3 +1,11 @@
+/*
+ * ZimDroid
+ *
+ * This activity is the main activity.
+ * A configured notebook can be selected.
+ * A new notebook can be added.
+ */
+
 package be.firewolf.zimdroid;
 
 import android.os.Bundle;
@@ -38,12 +46,17 @@ public class select_notebook extends Activity {
         //Adapter for ListView:
         lst_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listNotebooks);
     	list.setAdapter(lst_adapter);
-    	LoadNotepads();
+    	
+    	//TODO: Add test for Dropsync here?
+    	
+    	LoadNotebooks();
     	lst_adapter.notifyDataSetChanged();
     	list.setLongClickable(true);
     	list.setClickable(true);
        	list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
     		public boolean onItemLongClick(AdapterView<?> a, View v, int position, long id) {
+    			//TODO: in the future this popup can be a full settings screen for a notebook.
+    			// Notebook settings: location, name, icon. Each notebook can be a big button on main screen.
     			AlertDialog.Builder adb=new AlertDialog.Builder(select_notebook.this);
     			adb.setTitle("Delete notebook?");
             	adb.setMessage("Do you want to delete '" + listNotebooks.get(position)+"'?");
@@ -53,8 +66,8 @@ public class select_notebook extends Activity {
             		public void onClick(DialogInterface dialog, int which) {
             			listNotebooks.remove(positionToRemove);
             			lst_adapter.notifyDataSetChanged();
-            			SaveNotepads(listNotebooks);
-            			LoadNotepads();
+            			SaveNotebooks(listNotebooks);
+            			LoadNotebooks();
             		}
             	});
             adb.show();
@@ -88,17 +101,17 @@ public class select_notebook extends Activity {
     
     public void onResume(Bundle savedInstanceState) {
     	Log.i("ZimDroid", "onResume");
-    	LoadNotepads();
+    	LoadNotebooks();
     }
     
-	public void LoadNotepads() {
+	public void LoadNotebooks() {
     	Log.i("ZimDroid", "Run LoadNotepads()");
     	settings = getSharedPreferences(PREFS_NAME, 0);
     	String temp = null;
        	temp = settings.getString(PREFS_LIST, "NONE");
        	if(temp.equals("NONE") || temp.equals("")) {
        		Log.i("ZimDroid", "No rows found");
-       		Toast info = Toast.makeText(select_notebook.this.getBaseContext(), "No notepads available. Add existing or create new.", Toast.LENGTH_LONG);
+       		Toast info = Toast.makeText(select_notebook.this.getBaseContext(), "No notebooks available. Add existing or create new.", Toast.LENGTH_LONG);
        		info.show();
        	}
        	else {
@@ -116,11 +129,13 @@ public class select_notebook extends Activity {
        	}
     }
     
-    public void SaveNotepads(ArrayList<String> listNotepads) {
+	//TODO: Remove the default NONE notebook. Later a new empty notebook
+	// can be created via the menu. Only needed when editing of pages is possible.
+    public void SaveNotebooks(ArrayList<String> listNotebooks) {
     	SharedPreferences.Editor editor = settings.edit();
     	StringBuilder sb = new StringBuilder();
     	int i=0;
-    	for (String ss : listNotepads) {
+    	for (String ss : listNotebooks) {
     	    sb.append(ss).append(";");
     	    i++;
     	}
@@ -132,7 +147,7 @@ public class select_notebook extends Activity {
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_select_notepad, menu);
+        getMenuInflater().inflate(R.menu.activity_select_notebook, menu);
         return true;
     }
 
