@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 public class select_file extends ListActivity {
 	String PREFS_NAME = "ZimDroidSetv1";
-	String PREFS_LIST = "list_of_notepads";
+	String PREFS_LIST = "list_of_notebooks";
 	TextView txtPath;
 	ArrayAdapter<String> lista = null;
 	String path = Environment.getExternalStorageDirectory().getPath(); //just /sdcard.
@@ -85,13 +85,13 @@ public class select_file extends ListActivity {
     			SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
     			SharedPreferences.Editor editor = settings.edit();
     			String temp;
-    			temp = settings.getString("list_of_notepads", "NONE");
+    			temp = settings.getString("list_of_notebooks", "NONE");
     			if(temp.equals(""))
-    				editor.putString("list_of_notepads", location.get(position));
+    				editor.putString("list_of_notebooks", location.get(position));
     			else
-    				editor.putString("list_of_notepads", temp+";"+location.get(position));
+    				editor.putString("list_of_notebooks", temp+";"+location.get(position));
     			editor.commit();
-    			Intent refresh = new Intent(v.getContext(), select_notepad.class);
+    			Intent refresh = new Intent(v.getContext(), select_notebook.class);
     			startActivity(refresh);
     	}
     }

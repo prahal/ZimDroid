@@ -21,12 +21,12 @@ import android.content.SharedPreferences;
 import java.util.ArrayList;
 //import java.util.Set;
 
-public class select_notepad extends Activity {
+public class select_notebook extends Activity {
 	final String PREFS_NAME = "ZimDroidSetv1";
-	final String PREFS_LIST = "list_of_notepads";
+	final String PREFS_LIST = "list_of_notebooks";
 	public static SharedPreferences settings;
 	
-	final ArrayList<String> listNotepads = new ArrayList<String>();
+	final ArrayList<String> listNotebooks = new ArrayList<String>();
 	BaseAdapter lst_adapter;
 
     @Override
@@ -36,7 +36,7 @@ public class select_notepad extends Activity {
         
     	final ListView list = (ListView) findViewById(R.id.lstNotepads);
         //Adapter for ListView:
-        lst_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listNotepads);
+        lst_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listNotebooks);
     	list.setAdapter(lst_adapter);
     	LoadNotepads();
     	lst_adapter.notifyDataSetChanged();
@@ -44,16 +44,16 @@ public class select_notepad extends Activity {
     	list.setClickable(true);
        	list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
     		public boolean onItemLongClick(AdapterView<?> a, View v, int position, long id) {
-    			AlertDialog.Builder adb=new AlertDialog.Builder(select_notepad.this);
+    			AlertDialog.Builder adb=new AlertDialog.Builder(select_notebook.this);
     			adb.setTitle("Delete notebook?");
-            	adb.setMessage("Do you want to delete '" + listNotepads.get(position)+"'?");
+            	adb.setMessage("Do you want to delete '" + listNotebooks.get(position)+"'?");
             	final int positionToRemove = position;
             	adb.setNegativeButton("Cancel", null);
             	adb.setPositiveButton("Delete", new AlertDialog.OnClickListener() {
             		public void onClick(DialogInterface dialog, int which) {
-            			listNotepads.remove(positionToRemove);
+            			listNotebooks.remove(positionToRemove);
             			lst_adapter.notifyDataSetChanged();
-            			SaveNotepads(listNotepads);
+            			SaveNotepads(listNotebooks);
             			LoadNotepads();
             		}
             	});
@@ -67,7 +67,7 @@ public class select_notepad extends Activity {
        			//Calling activity_display_folder (with parameters):
        			Intent intBrowseNotepad = new Intent(v.getContext(),display_folder.class);
        			Bundle bundle = new Bundle();
-       			bundle.putString("notepad_path", listNotepads.get(position));
+       			bundle.putString("notepad_path", listNotebooks.get(position));
        			intBrowseNotepad.putExtras(bundle);
         		startActivityForResult(intBrowseNotepad, 0);
        		}
@@ -96,19 +96,19 @@ public class select_notepad extends Activity {
        	temp = settings.getString(PREFS_LIST, "NONE");
        	if(temp.equals("NONE") || temp.equals("")) {
        		Log.i("ZimDroid", "No rows found");
-       		Toast info = Toast.makeText(select_notepad.this.getBaseContext(), "No notepads available. Add existing or create new.", Toast.LENGTH_LONG);
+       		Toast info = Toast.makeText(select_notebook.this.getBaseContext(), "No notepads available. Add existing or create new.", Toast.LENGTH_LONG);
        		info.show();
        	}
        	else {
        		Log.i("ZimDroid", "Find row");
        		temp = temp.replace(";;", ";");
        		String[] Notepads = temp.split(";");
-       		listNotepads.clear();
+       		listNotebooks.clear();
        		for (String position : Notepads) {
        			Log.i("ZimDroid", "Loop");
        			if(position.equals(""))
        				continue;
-				listNotepads.add(position);
+				listNotebooks.add(position);
 				lst_adapter.notifyDataSetChanged();
        		}
        	}
@@ -122,7 +122,7 @@ public class select_notepad extends Activity {
     	    sb.append(ss).append(";");
     	    i++;
     	}
-    	Toast info = Toast.makeText(select_notepad.this.getBaseContext(), Integer.toString(i)+" to save.", Toast.LENGTH_SHORT);
+    	Toast info = Toast.makeText(select_notebook.this.getBaseContext(), Integer.toString(i)+" to save.", Toast.LENGTH_SHORT);
     	info.show();
     	editor.putString(PREFS_LIST, sb.toString());
     	editor.commit();

@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme" >
         
         <activity
-            android:name=".select_notepad"
+            android:name=".select_notebook"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +47,7 @@
 
         <meta-data
             android:name="PREFS_LIST"
-            android:value="list_of_notepads" />
+            android:value="list_of_notebooks" />
 
         <activity
             android:name=".edit_page"
