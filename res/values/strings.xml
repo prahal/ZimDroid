@@ -3,8 +3,8 @@
 
     <string name="app_name">ZimDroid</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_select_notepad">Select notebook</string>
-    <string name="button_add_notepad">Add notebook</string>
+    <string name="title_activity_select_notebook">Select notebook</string>
+    <string name="button_add_notebook">Add notebook</string>
     <string name="title_activity_display_page">Browse page</string>
     <string name="title_activity_display_folder">Select page</string>
     <string name="title_activity_select_file">Select *.zim file</string>

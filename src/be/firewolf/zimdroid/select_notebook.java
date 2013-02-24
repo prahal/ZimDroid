@@ -34,7 +34,7 @@ public class select_notebook extends Activity {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_notebook);
         
-    	final ListView list = (ListView) findViewById(R.id.lstNotepads);
+    	final ListView list = (ListView) findViewById(R.id.lstNotebooks);
         //Adapter for ListView:
         lst_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listNotebooks);
     	list.setAdapter(lst_adapter);
@@ -72,7 +72,9 @@ public class select_notebook extends Activity {
         		startActivityForResult(intBrowseNotepad, 0);
        		}
 		});
-        final Button btn_add_notepad = (Button) findViewById(R.id.btnAddNotepad);
+       	
+       	//TODO: move add notebook button to top menu
+        final Button btn_add_notepad = (Button) findViewById(R.id.btnAddNotebook);
         btn_add_notepad.setOnClickListener(new View.OnClickListener() {
         	@Override
         	public void onClick(View v) {
