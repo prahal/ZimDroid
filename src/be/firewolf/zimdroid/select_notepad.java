@@ -45,11 +45,11 @@ public class select_notepad extends Activity {
        	list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
     		public boolean onItemLongClick(AdapterView<?> a, View v, int position, long id) {
     			AlertDialog.Builder adb=new AlertDialog.Builder(select_notepad.this);
-    			adb.setTitle("Usunąć?");
-            	adb.setMessage("Chcesz usunąć '" + listNotepads.get(position)+"'?");
+    			adb.setTitle("Delete notebook?");
+            	adb.setMessage("Do you want to delete '" + listNotepads.get(position)+"'?");
             	final int positionToRemove = position;
-            	adb.setNegativeButton("Anuluj", null);
-            	adb.setPositiveButton("Usuń", new AlertDialog.OnClickListener() {
+            	adb.setNegativeButton("Cancel", null);
+            	adb.setPositiveButton("Delete", new AlertDialog.OnClickListener() {
             		public void onClick(DialogInterface dialog, int which) {
             			listNotepads.remove(positionToRemove);
             			lst_adapter.notifyDataSetChanged();
@@ -90,22 +90,22 @@ public class select_notepad extends Activity {
     }
     
 	public void LoadNotepads() {
-    	Log.i("ZimDroid", "Uruchamianie LoadNotepads()");
+    	Log.i("ZimDroid", "Run LoadNotepads()");
     	settings = getSharedPreferences(PREFS_NAME, 0);
     	String temp = null;
        	temp = settings.getString(PREFS_LIST, "NONE");
        	if(temp.equals("NONE") || temp.equals("")) {
-       		Log.i("ZimDroid", "Nie znaleziono rekordów");
+       		Log.i("ZimDroid", "No rows found");
        		Toast info = Toast.makeText(select_notepad.this.getBaseContext(), "No notepads available. Add existing or create new.", Toast.LENGTH_LONG);
        		info.show();
        	}
        	else {
-       		Log.i("ZimDroid", "Znaleziono rekordy");
+       		Log.i("ZimDroid", "Find row");
        		temp = temp.replace(";;", ";");
        		String[] Notepads = temp.split(";");
        		listNotepads.clear();
        		for (String position : Notepads) {
-       			Log.i("ZimDroid", "pętla");
+       			Log.i("ZimDroid", "Loop");
        			if(position.equals(""))
        				continue;
 				listNotepads.add(position);

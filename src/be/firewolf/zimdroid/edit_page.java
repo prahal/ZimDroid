@@ -46,9 +46,9 @@ public class edit_page extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("ZimDroid", "przed");
+        Log.i("ZimDroid", "before");
         setContentView(R.layout.activity_edit_page);
-        Log.i("ZimDroid", "po");
+        Log.i("ZimDroid", "after");
         Bundle bundle = this.getIntent().getExtras();
         path = new File(bundle.getString("page_path"));
         if(path == null)
