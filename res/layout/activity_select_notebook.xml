@@ -11,11 +11,4 @@
         android:layout_height="407dp"
         android:layout_weight="2.14" >
     </ListView>
-
-    <Button
-        android:id="@+id/btnAddNotebook"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_add_notebook" />
-
 </LinearLayout>

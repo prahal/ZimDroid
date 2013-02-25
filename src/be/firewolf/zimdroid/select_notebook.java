@@ -13,21 +13,17 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
-//import android.view.MenuItem;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-//import android.support.v4.app.NavUtils;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
 import java.util.ArrayList;
-//import java.util.Set;
 
 public class select_notebook extends Activity {
 	final String PREFS_NAME = "ZimDroidSetv1";
@@ -85,18 +81,6 @@ public class select_notebook extends Activity {
         		startActivityForResult(intBrowseNotepad, 0);
        		}
 		});
-       	
-       	//TODO: move add notebook button to top menu
-        final Button btn_add_notepad = (Button) findViewById(R.id.btnAddNotebook);
-        btn_add_notepad.setOnClickListener(new View.OnClickListener() {
-        	@Override
-        	public void onClick(View v) {
-        		//Calling activity_add_notepad:
-        		Intent intSelectFile = new Intent(v.getContext(),select_file.class);
-        		startActivityForResult(intSelectFile, 0);
-        	}
-				
-		});
     }
     
     public void onResume(Bundle savedInstanceState) {
@@ -149,6 +133,21 @@ public class select_notebook extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_select_notebook, menu);
         return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	switch (item.getItemId()) {
+	    	case R.id.menu_notebook_add:
+	    		Intent intSelectFile = new Intent(select_notebook.this.getBaseContext(),select_file.class);
+	            startActivityForResult(intSelectFile, 0);
+	    		return(true);
+	    		
+	    	case R.id.menu_settings:
+	    		//TODO: add code
+	    		return(true);
+	    }
+    	return(super.onOptionsItemSelected(item));
     }
 
     
