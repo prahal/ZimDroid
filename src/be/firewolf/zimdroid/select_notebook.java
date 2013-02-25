@@ -139,12 +139,17 @@ public class select_notebook extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
     	switch (item.getItemId()) {
 	    	case R.id.menu_notebook_add:
-	    		Intent intSelectFile = new Intent(select_notebook.this.getBaseContext(),select_file.class);
-	            startActivityForResult(intSelectFile, 0);
+	    		Intent intSelectFile1 = new Intent(select_notebook.this.getBaseContext(),select_file.class);
+	            startActivityForResult(intSelectFile1, 0);
 	    		return(true);
 	    		
 	    	case R.id.menu_settings:
 	    		//TODO: add code
+	    		return(true);
+	    		
+	    	case R.id.menu_about:
+	    		Intent intSelectFile2 = new Intent(select_notebook.this.getBaseContext(),activity_about.class);
+	            startActivityForResult(intSelectFile2, 0);
 	    		return(true);
 	    }
     	return(super.onOptionsItemSelected(item));

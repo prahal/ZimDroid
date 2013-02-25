@@ -2,10 +2,13 @@
     <item android:id="@+id/menu_notebook_add"
         android:title="@string/menu_notebook_add"
         android:showAsAction="ifRoom"
-        android:orderInCategory="90" />
+        android:orderInCategory="80" />
     
     <item android:id="@+id/menu_settings"
         android:title="@string/menu_settings"
-        android:orderInCategory="100" />
+        android:orderInCategory="90" />
 
+    <item android:id="@+id/menu_about"
+        android:title="@string/menu_about"
+        android:orderInCategory="100" />
 </menu>
