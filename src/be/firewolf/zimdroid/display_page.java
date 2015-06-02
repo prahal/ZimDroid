@@ -105,7 +105,7 @@ public class display_page extends Activity {
         			Content = Content.replaceAll("([/][/]([\\w: +-]+)[/][/])","<em>$2</em>"); //for italics
         			reader.close();
         			mdView.getSettings().setDefaultTextEncodingName("utf-8");
-        			mdView.loadData(Content, "text/html", "utf-8");
+        			mdView.loadDataWithBaseURL("fake/",Content, "text/html", "utf-8", null);
         		}
         	}
         	catch(IOException e) {
