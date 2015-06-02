@@ -58,6 +58,7 @@ public class FolderViewAdapter extends BaseAdapter {
 	@Override
 	public View getView(final int position, View convertView, final ViewGroup parent) {
 		View row = convertView;
+		int numchildren = mPages.get(position).getChildren();
 		if(row == null) {
 			Log.i("ZimDroid", "Creating row layout...");
 			row=mInflater.inflate(R.layout.row, null);
@@ -67,10 +68,10 @@ public class FolderViewAdapter extends BaseAdapter {
 		nextdir.setVisibility(Button.GONE);
 		pagename.setLongClickable(true);
 		pagename.setText(utf(mPages.get(position).getPrintName()));
-		Log.i("ZimDroid", "Adding item: "+mPages.get(position).getName()+" / kids:"+mPages.get(position).getChildren());
-		Log.i("ZimDroid","Adapter: "+mPages.get(position).getName()+" gC: "+mPages.get(position).getChildren());
-		if(mPages.get(position).getChildren() != 0) {
-			nextdir.setText(String.valueOf(mPages.get(position).getChildren()));
+		Log.i("ZimDroid", "Adding item: "+mPages.get(position).getName()+" / kids:"+numchildren);
+		Log.i("ZimDroid","Adapter: "+mPages.get(position).getName()+" gC: "+numchildren);
+		if(numchildren != 0) {
+			nextdir.setText(String.valueOf(numchildren));
 			nextdir.setVisibility(Button.VISIBLE);
 		}
 		pagename.setOnClickListener(new View.OnClickListener() {
