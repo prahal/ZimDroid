@@ -8,8 +8,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
 
 import android.text.format.Time;
 import android.util.Log;
@@ -18,7 +20,7 @@ public class ZimNotepad {
 	
 
 	
-	class ZimPage {
+	class ZimPage implements Comparable<ZimPage> {
 		private String Name = "";
 		private String Content = "";
 		private File Location;
@@ -111,6 +113,10 @@ public class ZimNotepad {
 		public File getNotepadFile() {
 			return Notepad;
 		}
+
+		public int compareTo(ZimPage page) {
+			return this.getPrintName().compareTo(page.getPrintName());
+		}
 	}
 		
 	public String name = null;
@@ -146,6 +152,7 @@ public class ZimNotepad {
 						Log.i("ZimDroid", "Page added: "+apped.substring(0,apped.length()-4));
 					}
 				}
+				Collections.sort(pages);
 			}
 		}
 		catch(FileNotFoundException e) {
@@ -188,6 +195,7 @@ public class ZimNotepad {
 			lista = testing.children;
 			Log.i("ZimDroid", "Children:"+lista.size());
 		}
+		Collections.sort(lista);
 		return lista;
 	}
 	
