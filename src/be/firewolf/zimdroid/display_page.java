@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.regex.MatchResult;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 //import java.lang.reflect.Array;
 //import java.util.ArrayList;
 //import java.util.List;
@@ -11,6 +14,7 @@ import java.io.IOException;
 import org.apache.http.util.EncodingUtils;
 
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -45,8 +49,24 @@ public class display_page extends Activity {
 		}
 		return text;
 	}
-	
-    @Override
+
+
+	/*
+	 * http://www.java2s.com/Code/Android/File/FileNameExtensionUtils.htm
+	 */
+	private static String getRemovedExtensionName(String name){
+		String baseName;
+		if(name.lastIndexOf(".")==-1){
+			baseName=name;
+
+		}else{
+			int index=name.lastIndexOf(".");
+			baseName=name.substring(0,index);
+		}
+		return baseName;
+	}
+
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_page);
@@ -112,7 +132,14 @@ public class display_page extends Activity {
         			BufferedReader reader = new BufferedReader(new FileReader(path));
         			String line;
 					Boolean first_empty = true;
-        			while( (line = reader.readLine()) != null) {
+					String relpath = "";
+					Uri uri;
+					String alt = "";
+					MatchResult mr;
+					Pattern p;
+					Matcher m;
+					File file;
+					while( (line = reader.readLine()) != null) {
         				//omitting "not important" rows:
         				if(line.contains("Content-Type") || line.contains("Wiki-Format") || line.contains("Creation-Date"))
         					continue;
@@ -132,6 +159,16 @@ public class display_page extends Activity {
         				line = line.replaceAll("(^[*] ([\\w': +-]+))","<li>$2</li>");
         				line = line.replaceAll("(^[*][*]{0} ([\\w': +-]+))", "<li>$2</li>"); //for list TODO: set <ul>/<ol> counter
         				line = line.replaceAll("([\\[][\\[]([\\p{Print}]+)[\\]][\\]])", LinkHandler("$2")); //detect wiki and regular links
+						p = Pattern.compile("([{][{]([^|{]+)[|]*(.*)[}][}])");
+						m = p.matcher(line.toString());
+						while (m.find()) {
+							mr = m.toMatchResult();
+							relpath = mr.group(2);
+							alt = mr.group(3);
+							file = new File(getRemovedExtensionName(path.getAbsolutePath()), relpath);
+							uri = Uri.fromFile(file.getAbsoluteFile());
+							line = line.replaceFirst("([{][{]([^|{]+)[|]*(.*)[}][}])", "<img src=\"" + uri.toString() +"\" alt=\""+ alt.toString() +"\" />"); //for images
+						}
         				line = line.replaceAll("([a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+)","<a href='mailto:$1'>$1</a>"); //email to mailto link.
         				line = line.replaceAll("", "");
         				Content+=line;
