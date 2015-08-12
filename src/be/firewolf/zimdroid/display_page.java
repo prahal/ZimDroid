@@ -111,11 +111,15 @@ public class display_page extends Activity {
         		else {
         			BufferedReader reader = new BufferedReader(new FileReader(path));
         			String line;
+					Boolean first_empty = true;
         			while( (line = reader.readLine()) != null) {
         				//omitting "not important" rows:
         				if(line.contains("Content-Type") || line.contains("Wiki-Format") || line.contains("Creation-Date"))
         					continue;
-        				line = line.replaceAll("([*][*]([\\w: +-]+)[*][*])","<b>$2</b>"); //for bold text
+						if (line.contentEquals("")) {
+							first_empty = false;
+							continue;
+						}
         				line = line.replaceAll("([*][*]([\\w': +-]+)[*][*])","<b>$2</b>"); //for bold text
 						line = line.replaceAll("([_][_]([\\w': +-]+)[_][_])","<u>$2</u>"); //for underlined text
         				//line = line.replaceAll("([/][/]([\\w': +-]+)[/][/])","<em>$2</em>"); //for italics
