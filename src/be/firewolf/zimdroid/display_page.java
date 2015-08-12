@@ -147,18 +147,6 @@ public class display_page extends Activity {
 							first_empty = false;
 							continue;
 						}
-        				line = line.replaceAll("([*][*]([\\w': +-]+)[*][*])","<b>$2</b>"); //for bold text
-						line = line.replaceAll("([_][_]([\\w': +-]+)[_][_])","<u>$2</u>"); //for underlined text
-        				//line = line.replaceAll("([/][/]([\\w': +-]+)[/][/])","<em>$2</em>"); //for italics
-        				line = line.replaceAll("([=]{5}=*([\\w': +-]+)=*[=]{5}=*)","<h1>$2</h1>"); //for headers
-						line = line.replaceAll("([=]{4}([\\w': +-]+)[=]{4})","<h2>$2</h2>"); //for headers
-						line = line.replaceAll("([=]{3}([\\w': +-]+)[=]{3})","<h3>$2</h3>"); //for headers
-						line = line.replaceAll("([=]{2}([\\w': +-]+)[=]{2})","<h4>$2</h4>"); //for headers
-						line = line.replaceAll("([=]{1}([\\w': +-]+)[=]{1})","<h5>$2</h5>"); //for headers
-						line = line.replaceAll("(^[•] ([\\w': +-]+))","<li>$2</li>"); //for lists TODO: see below.
-        				line = line.replaceAll("(^[*] ([\\w': +-]+))","<li>$2</li>");
-        				line = line.replaceAll("(^[*][*]{0} ([\\w': +-]+))", "<li>$2</li>"); //for list TODO: set <ul>/<ol> counter
-        				line = line.replaceAll("([\\[][\\[]([\\p{Print}]+)[\\]][\\]])", LinkHandler("$2")); //detect wiki and regular links
 						p = Pattern.compile("([{][{]([^|{]+)[|]*(.*)[}][}])");
 						m = p.matcher(line.toString());
 						while (m.find()) {
@@ -169,6 +157,18 @@ public class display_page extends Activity {
 							uri = Uri.fromFile(file.getAbsoluteFile());
 							line = line.replaceFirst("([{][{]([^|{]+)[|]*(.*)[}][}])", "<img src=\"" + uri.toString() +"\" alt=\""+ alt.toString() +"\" />"); //for images
 						}
+						line = line.replaceAll("([*][*]([\\w'’\\?,\\/«»: +-]+)[*][*])","<b>$2</b>"); //for bold text
+						line = line.replaceAll("([_][_]([\\w'’\\?,\\/«»: +-]+)[_][_])","<u>$2</u>"); //for underlined text
+        				//line = line.replaceAll("([/][/]([\\w'\?,’,«»\/: +-]+)[/][/])","<em>$2</em>"); //for italics
+        				line = line.replaceAll("([=]{5}=*([\\w'’\\?,\\/«»: +-]+)=*[=]{5}=*)","<h1>$2</h1>"); //for headers
+						line = line.replaceAll("([=]{4}([\\w'’\\?,\\/«»: +-]+)[=]{4})","<h2>$2</h2>"); //for headers
+						line = line.replaceAll("([=]{3}([\\w'’\\?,\\/«»: +-]+)[=]{3})","<h3>$2</h3>"); //for headers
+						line = line.replaceAll("([=]{2}([\\w'’\\?,\\/«»: +-]+)[=]{2})","<h4>$2</h4>"); //for headers
+						line = line.replaceAll("([=]{1}([\\w'’\\?,\\/«»: +-]+)[=]{1})","<h5>$2</h5>"); //for headers
+						line = line.replaceAll("(^[•] ([\\w'’\\?,\\/v»: +-]+))","<li>$2</li>"); //for lists TODO: see below.
+        				line = line.replaceAll("(^[*] ([\\w'’\\?,\\/«»: +-]+))", "<li>$2</li>");
+						line = line.replaceAll("(^[*][*]{0} ([\\w'’\\?,\\/«»: +-]+))", "<li>$2</li>"); //for list TODO: set <ul>/<ol> counter
+						line = line.replaceAll("([\\[][\\[]([\\p{Print}]+)[\\]][\\]])", LinkHandler("$2")); //detect wiki and regular links
         				line = line.replaceAll("([a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+)","<a href='mailto:$1'>$1</a>"); //email to mailto link.
         				line = line.replaceAll("", "");
         				Content+=line;
