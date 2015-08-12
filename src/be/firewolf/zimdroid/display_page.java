@@ -116,6 +116,7 @@ public class display_page extends Activity {
         				if(line.contains("Content-Type") || line.contains("Wiki-Format") || line.contains("Creation-Date"))
         					continue;
         				line = line.replaceAll("([*][*]([\\w: +-]+)[*][*])","<b>$2</b>"); //for bold text
+						line = line.replaceAll("([_][_]([\\w': +-]+)[_][_])","<u>$2</u>"); //for underlined text
         				//line = line.replaceAll("([/][/]([\\w: +-]+)[/][/])","<em>$2</em>"); //for italics
         				line = line.replaceAll("([=]{6}([\\w: +-]+)[=]{6})","<h3>$2</h3>"); //for headers
         				line = line.replaceAll("(^[•] ([\\w: +-]+))","<li>$2</li>"); //for lists TODO: see below.
